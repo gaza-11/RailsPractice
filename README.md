@@ -1,24 +1,32 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails学習のためのサンプルアプリ。
 
-Things you may want to cover:
+* Rubyのバージョン  
+    2.3.3p222 (2016-11-21 revision 56859)
+    
+* Railsのバージョン  
+    5.0.2。
+    
+* 動作に必要なもの  
+    MySqlが必要。（開発に使用したのはバージョン5.7）  
+    Actorsテーブルが必要。  
+    Developmentの設定でしか動作確認していないのでProductionでは動かないかも。
+    
+* 処理内容  
+    今のところActorsテーブルへのCRUD処理と検索機能。
 
-* Ruby version
+* DBの作成手順  
+    migrationファイルもチェックインしたのでrails db:migrateで作成できるはず。
+    
+* DBの初期化  
+    seedsファイルにテストデータが入っています。
+    
+* テスト方法  
+    テストコード未作成です。
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* 残作業  
+    flash.noticeの表示がうまくいかない点の修正。  
+    入力値のバリデーション。  
+    Herokuへのデプロイ。
+    
