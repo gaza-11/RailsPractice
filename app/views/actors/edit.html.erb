@@ -1,0 +1,15 @@
+<h1>Actors#edit</h1>
+
+<p>編集画面</p>
+
+<%= form_for @actor do |form| %>
+    <table>
+      <tr>
+        <th><%=form.label :first_name, 'first_name' %></th><td><%= form.text_field :first_name %></td>
+      </tr>
+      <tr>
+        <th><%=form.label :last_name, 'last_name' %></th><td><%= form.text_field :last_name %></td>
+      </tr>
+    </table>
+    <p><%= form.submit '更新' %></p>
+<% end %>

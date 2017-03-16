@@ -1,0 +1,31 @@
+<h1>Actors#index</h1>
+
+<div>
+  <p>検索</p>
+  <%= form_tag :search_actors, method: :get do  %>
+      <p>first_name: <%= text_field_tag 'first_name', params[:first_name] %></p>
+      <p>last_name:  <%= text_field_tag 'last_name', params[:last_name] %><%= submit_tag '検索' %></p>
+  <% end %>
+</div>
+
+<% if flash.notice %>
+  <%= flash.notice %>
+<% end %>
+
+<br/>
+<p>Actorの一覧</p>
+<table>
+  <tr>
+    <th>FirstName</th><th>LastName</th><th></th><th></th>
+  </tr>
+  <% @actors.each do |actor| %>
+    <tr>
+      <td><%= actor.first_name %></td><td><%= actor.last_name %></td>
+      <td><%= link_to '編集', edit_actor_path(actor), method: :get %></td>
+      <td><%= link_to '削除', actor_path(actor), method: :delete, data: {confirm: '本当に削除しますか？'}  %></td>
+    </tr>
+  <% end %>
+</table>
+<br/>
+Actorの追加<br/>
+<%= link_to '追加', :new_actor  %>
