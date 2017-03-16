@@ -6,6 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Actor.create(:first_name => 'testF', :last_name => 'testL')
-Actor.create(:first_name => 'aaaa', :last_name => 'bbbbbb')
-Actor.create(:first_name => 'fffff', :last_name => 'zzzz')
+Actor.create(:first_name => 'カツオ', :last_name => '磯野')
+Actor.create(:first_name => 'タラオ', :last_name => '磯野')
+Actor.create(:first_name => '波平', :last_name => '磯野')

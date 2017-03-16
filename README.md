@@ -10,14 +10,14 @@ Rails学習のためのサンプルアプリ。
     
 * 動作に必要なもの  
     MySqlが必要。（開発に使用したのはバージョン5.7）  
-    Actorsテーブルが必要。  
-    Developmentの設定でしか動作確認していないのでProductionでは動かないかも。
+    ruby_practiceスキーマのActorsテーブルが必要。  
+    Developmentの設定でしか動作確認していないのでProductionでは動かないかもしれません…。
     
 * 処理内容  
-    今のところActorsテーブルへのCRUD処理と検索機能。
+   ActorsテーブルへのCRUD処理と検索機能。
 
 * DBの作成手順  
-    migrationファイルもチェックインしたのでrails db:migrateで作成できるはず。
+    migrationファイルもチェックインしたのでrails db:migrateで作成できると考えています…。
     
 * DBの初期化  
     seedsファイルにテストデータが入っています。
