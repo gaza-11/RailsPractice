@@ -1,7 +1,7 @@
 <h1>Actors#index</h1>
 
 <div>
-  <p>検索</p>
+  <h2>検索</h2>
   <%= form_tag :search_actors, method: :get do  %>
       <p>first_name: <%= text_field_tag 'first_name', params[:first_name] %></p>
       <p>last_name:  <%= text_field_tag 'last_name', params[:last_name] %><%= submit_tag '検索' %></p>
@@ -13,11 +13,14 @@
 <% end %>
 
 <br/>
-<p>Actorの一覧</p>
-<table>
-  <tr>
-    <th>FirstName</th><th>LastName</th><th></th><th></th>
-  </tr>
+<h2>Actorの一覧</h2>
+<table class="table table-striped table-bordered">
+  <thread class="thread-inverse">
+    <tr>
+      <th>FirstName</th><th>LastName</th><th></th><th></th>
+    </tr>
+  </thread>
+  <tbody>
   <% @actors.each do |actor| %>
     <tr>
       <td><%= actor.first_name %></td><td><%= actor.last_name %></td>
@@ -25,7 +28,8 @@
       <td><%= link_to '削除', actor_path(actor), method: :delete, data: {confirm: '本当に削除しますか？'}  %></td>
     </tr>
   <% end %>
+  </tbody>
 </table>
 <br/>
-Actorの追加<br/>
+<h2>Actorの追加</h2>
 <%= link_to '追加', :new_actor  %>
