@@ -8,7 +8,8 @@ class ActorsController < ApplicationController
 
   def destroy
     Actor.delete params[:id]
-    redirect_to action:'index', notice:'削除しました。'
+    flash[:notice] = '削除しました。'
+    redirect_to action:'index'
   end
 
   def new
@@ -22,9 +23,11 @@ class ActorsController < ApplicationController
   def create
     @actor = Actor.new params[:actor].permit :first_name, :last_name
     if @actor.save
-      redirect_to action:'index', notice:'登録しました。'
+      flash[:notice] = '登録しました。'
+      redirect_to action:'index'
     else
-      redirect_to action:'index', notice:'登録に失敗しました。'
+      flash[:notice] = '登録に失敗しました。'
+      render 'new'
     end
   end
 
@@ -32,9 +35,11 @@ class ActorsController < ApplicationController
     @actor = Actor.find params[:id]
     @actor.assign_attributes params[:actor].permit :first_name, :last_name
     if @actor.save
-      redirect_to action:'index', notice:'更新しました。'
+      flash[:notice] = '更新しました。'
+      redirect_to action:'index'
     else
-      redirect_to action:'index', notice:'更新に失敗しました。'
+      flash[:notice] = '更新に失敗しました。'
+      render 'edit'
     end
   end
 
