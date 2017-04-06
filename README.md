@@ -25,7 +25,9 @@ Rails学習のためのサンプルアプリ。
 * テスト方法  
     テストコード未作成です。
 
+* Heroku
+    https://protected-castle-17819.herokuapp.com/  
+
 * 残作業  
     BootStrapが適用できていない部分を修正。  
-    Herokuへのデプロイ。
     
