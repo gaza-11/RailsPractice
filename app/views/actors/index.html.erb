@@ -6,8 +6,8 @@
 <div>
   <h2>検索</h2>
   <%= form_tag :search_actors, method: :get do  %>
-      <p>first_name: <%= text_field_tag 'first_name', params[:first_name] %></p>
-      <p>last_name:  <%= text_field_tag 'last_name', params[:last_name] %><%= submit_tag '検索' %></p>
+      <p>first_name: <%= text_field_tag :first_name, params[:first_name] %></p>
+      <p>last_name:  <%= text_field_tag :last_name, params[:last_name] %><%= submit_tag '検索' %></p>
   <% end %>
 </div>
 <br/>
