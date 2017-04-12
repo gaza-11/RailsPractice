@@ -6,8 +6,8 @@
 <div>
   <h2>検索</h2>
   <%= form_tag :search_actors, method: :get do  %>
-      <p>first_name: <%= text_field_tag :first_name, params[:first_name] %></p>
-      <p>last_name:  <%= text_field_tag :last_name, params[:last_name] %><%= submit_tag '検索' %></p>
+      <p><%= t 'activerecord.attributes.actor.first_name' %> <%= text_field_tag :first_name, params[:first_name] %></p>
+      <p><%= t 'activerecord.attributes.actor.last_name' %>  <%= text_field_tag :last_name, params[:last_name] %>  <%= submit_tag '検索' %></p>
   <% end %>
 </div>
 <br/>
@@ -15,7 +15,7 @@
 <table class="table table-striped table-bordered">
   <thread class="thread-inverse">
     <tr>
-      <th>FirstName</th><th>LastName</th><th></th><th></th>
+      <th><%= t 'activerecord.attributes.actor.first_name' %></th><th><%= t 'activerecord.attributes.actor.last_name' %></th><th></th><th></th>
     </tr>
   </thread>
   <tbody>
