@@ -55,7 +55,7 @@
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/config/database.yml</remarks>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://127.0.0.1/RailsPractice_production</jdbc-url>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/de70v06asdg6up</jdbc-url>
       <explain-plan-config>
         <provider>com.intellij.database.plan.mysql.MysqlExplainPlanProvider</provider>
       </explain-plan-config>
