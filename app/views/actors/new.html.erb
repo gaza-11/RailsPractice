@@ -1,9 +1,15 @@
-<h1>新規登録画面</h1>
-<% if flash.notice %>
-   <p>通知メッセージ： <%= flash.notice %> </p>
-<% end %>
+<div>
+  <h1>新規登録画面</h1>
+  <% if flash.notice %>
+    <div class="alert alert-info">通知メッセージ：<%= flash.notice %></div>
+  <% end %>
+</div>
 
-<%= form_for @actor do |form| %>
-<%= render 'form', form: form %>
-<p><%= form.submit '登録' %></p>
-<% end %>
+<div>
+  <%= form_for @actor do |form| %>
+  <%= render 'form', form: form %>
+  <div class="form-group">
+    <%= form.submit '登録', class: 'btn btn-default' %>
+  </div>
+  <% end %>
+</div>

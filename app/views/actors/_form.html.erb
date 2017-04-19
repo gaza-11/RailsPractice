@@ -1,9 +1,11 @@
 <%= render 'shared/errors', obj: @actor %>
-<table class="table table-bordered">
-  <tr>
-    <th scope="row"><%=form.label :first_name %></th><td><%= form.text_field :first_name %></td>
-  </tr>
-  <tr>
-    <th scope="row"><%=form.label :last_name %></th><td><%= form.text_field :last_name %></td>
-  </tr>
-</table>
+<div class="form-group">
+  <table class="table table-bordered">
+    <tr>
+      <th scope="row"><%=form.label :first_name %></th><td><%= form.text_field :first_name %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%=form.label :last_name %></th><td><%= form.text_field :last_name %></td>
+    </tr>
+  </table>
+</div>
