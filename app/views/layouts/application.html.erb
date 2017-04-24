@@ -9,26 +9,34 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-inverse">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-data">
-        <span class="sr-only">メニュー</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">Rails練習アプリ</a>
-    </div>
-    <div id="nav-data" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/">Home</a></li>
-        <li><a href="/">CRUD練習</a></li>
-      </ul>
-    </div>
-  </nav>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-data">
+            <span class="sr-only">メニュー</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Rails練習アプリ</a>
+        </div>
+        <div id="nav-data" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Home</a></li>
+            <li><a href="/">CRUD練習</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-  <div class="container">
-    <%= yield %>
-  </div>
+    <div class="container">
+      <%= yield %>
+    </div>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted h5">Sticky Footer Test</p>
+      </div>
+    </footer>
   </body>
 </html>
