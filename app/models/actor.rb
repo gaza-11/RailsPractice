@@ -3,9 +3,9 @@ class Actor < ApplicationRecord
   validates :last_name, presence: true, length: {minimum: 1, maximum: 10}
 
   class << self
-    def search (first_name, last_name)
+    def search(first_name, last_name)
       if first_name.present? && last_name.present?
-        @actors = where('first_name like ?', "%#{first_name}%").where( 'last_name like ?', "%#{last_name}%")
+        @actors = where('first_name like ?', "%#{first_name}%").where('last_name like ?', "%#{last_name}%")
       elsif first_name.present?
         @actors = where 'first_name like ?', "%#{first_name}%"
       elsif last_name.present?
