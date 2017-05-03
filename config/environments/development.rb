@@ -53,4 +53,5 @@ Rails.application.configure do
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.log_level = :debug
+  config.logger = Logger.new 'log/development.log', 'daily'
 end
