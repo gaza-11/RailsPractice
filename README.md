@@ -23,10 +23,7 @@ Rails学習のためのサンプルアプリ。
     seedsファイルにテストデータが入っています。
     
 * テスト方法  
-    テストコード未作成です。
+    テストコード作成中。
 
 * Heroku  
     https://protected-castle-17819.herokuapp.com/  
-
-* 残作業  
-    BootStrapが適用できていない部分を修正。  
