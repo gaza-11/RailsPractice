@@ -1,6 +1,6 @@
 class Actor < ApplicationRecord
-  validates :first_name, presence: true, length: {minimum: 1, maximum: 10}
-  validates :last_name, presence: true, length: {minimum: 1, maximum: 10}
+  validates :first_name, presence: true, length: { minimum: 1, maximum: 20 }
+  validates :last_name, presence: true, length: { minimum: 1, maximum: 20 }
 
   class << self
     def search(first_name, last_name)
