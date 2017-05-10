@@ -2,10 +2,16 @@
 <div class="form-group">
   <table class="table table-bordered">
     <tr>
-      <th scope="row"><%=form.label :first_name %></th><td><%= form.text_field :first_name %></td>
+      <th scope="row"><%=form.label :first_name %></th>
+      <td><%= form.text_field :first_name %></td>
     </tr>
     <tr>
-      <th scope="row"><%=form.label :last_name %></th><td><%= form.text_field :last_name %></td>
+      <th scope="row"><%=form.label :last_name %></th>
+      <td><%= form.text_field :last_name %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%=form.label :birthday %></th>
+      <td><%= form.text_field :birthday, value: @actor.birthday.try(:strftime, '%Y/%m/%d') %></td>
     </tr>
   </table>
 </div>

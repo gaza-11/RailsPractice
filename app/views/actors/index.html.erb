@@ -17,18 +17,25 @@
   </div>
 <% end %>
 </div>
+
 <div class="panel panel-default">
 <h2>Actorの一覧</h2>
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th><%= t 'activerecord.attributes.actor.first_name' %></th><th><%= t 'activerecord.attributes.actor.last_name' %></th><th></th><th></th>
+      <th><%= t 'activerecord.attributes.actor.first_name' %></th>
+      <th><%= t 'activerecord.attributes.actor.last_name' %></th>
+      <th><%= t 'activerecord.attributes.actor.birthday' %></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
   <% @actors.each do |actor| %>
     <tr>
-      <td><%= actor.first_name %></td><td><%= actor.last_name %></td>
+      <td><%= actor.first_name %></td>
+      <td><%= actor.last_name %></td>
+      <td><%= actor.birthday.try(:strftime, '%Y/%m/%d') %></td>
       <td><%= link_to '編集', edit_actor_path(actor), method: :get %></td>
       <td><%= link_to '削除', actor_path(actor), method: :delete, data: {confirm: '本当に削除しますか？'}  %></td>
     </tr>

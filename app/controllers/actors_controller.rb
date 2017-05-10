@@ -9,7 +9,7 @@ class ActorsController < ApplicationController
   def destroy
     Actor.delete params[:id]
     flash[:notice] = '削除しました。'
-    redirect_to action:'index'
+    redirect_to action: 'index'
   end
 
   def new
@@ -21,10 +21,10 @@ class ActorsController < ApplicationController
   end
 
   def create
-    @actor = Actor.new params[:actor].permit :first_name, :last_name
+    @actor = Actor.new params[:actor].permit :first_name, :last_name, :birthday
     if @actor.save
       flash[:notice] = '登録しました。'
-      redirect_to action:'index'
+      redirect_to action: 'index'
     else
       flash[:notice] = '登録に失敗しました。'
       render 'new'
@@ -33,10 +33,10 @@ class ActorsController < ApplicationController
 
   def update
     @actor = Actor.find params[:id]
-    @actor.assign_attributes params[:actor].permit :first_name, :last_name
+    @actor.assign_attributes params[:actor].permit :first_name, :last_name, :birthday
     if @actor.save
       flash[:notice] = '更新しました。'
-      redirect_to action:'index'
+      redirect_to action: 'index'
     else
       flash[:notice] = '更新に失敗しました。'
       render 'edit'
