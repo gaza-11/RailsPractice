@@ -44,7 +44,7 @@ class ActorsController < ApplicationController
   end
 
   def search
-    @actors = Actor.search params[:first_name], params[:last_name]
+    @actors = Actor.filter_by_name params[:first_name], params[:last_name]
     render 'index'
   end
 
