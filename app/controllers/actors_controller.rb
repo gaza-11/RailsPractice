@@ -27,19 +27,21 @@ class ActorsController < ApplicationController
       redirect_to action: 'index'
     else
       flash[:notice] = '登録に失敗しました。'
-      render 'new'
+      redirect_to action: 'new'
     end
   end
 
   def update
     @actor = Actor.find params[:id]
-    @actor.assign_attributes params[:actor].permit :first_name, :last_name, :birthday
+    @actor.assign_attributes first_name: params[:actor].permit(:first_name),
+                             last_name:  params[:actor].permit(:last_name),
+                             birthday:  params[:actor].permit(:birthday)
     if @actor.save
       flash[:notice] = '更新しました。'
       redirect_to action: 'index'
     else
       flash[:notice] = '更新に失敗しました。'
-      render 'edit'
+      redirect_to action: 'edit'
     end
   end
 
