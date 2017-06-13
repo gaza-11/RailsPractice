@@ -8,3 +8,6 @@ ja:
         first_name: 名
         last_name: 姓
         birthday: 誕生日
+  errors:
+      messages:
+        invalid_date: の指定が不正です。

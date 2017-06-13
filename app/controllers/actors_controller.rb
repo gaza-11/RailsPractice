@@ -32,16 +32,16 @@ class ActorsController < ApplicationController
   end
 
   def update
+    actor = params[:actor]
+
     @actor = Actor.find params[:id]
-    @actor.assign_attributes first_name: params[:actor].permit(:first_name),
-                             last_name:  params[:actor].permit(:last_name),
-                             birthday:  params[:actor].permit(:birthday)
+    @actor.assign_attributes(first_name: actor[:first_name], last_name: actor[:last_name], birthday: actor[:birthday])
     if @actor.save
       flash[:notice] = '更新しました。'
       redirect_to action: 'index'
     else
       flash[:notice] = '更新に失敗しました。'
-      redirect_to action: 'edit'
+      render action: 'edit'
     end
   end
 
@@ -51,6 +51,7 @@ class ActorsController < ApplicationController
   end
 
   private
+
   def output_start_action_log
     logger.debug "#{Time.now.instance_eval { '%s.%03d' % [strftime('%Y/%m/%d %H:%M:%S'), (usec / 1000.0).round] }} : action_start"
   end
