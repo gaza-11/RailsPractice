@@ -19,31 +19,35 @@
 </div>
 
 <div class="panel panel-default">
-<h2>Actorの一覧</h2>
-<table class="table table-striped table-bordered">
-  <thead>
-    <tr>
-      <th><%= t 'activerecord.attributes.actor.first_name' %></th>
-      <th><%= t 'activerecord.attributes.actor.last_name' %></th>
-      <th><%= t 'activerecord.attributes.actor.birthday' %></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @actors.each do |actor| %>
-    <tr>
-      <td><%= actor.first_name %></td>
-      <td><%= actor.last_name %></td>
-      <td><%= actor.birthday.try(:strftime, '%Y/%m/%d') %></td>
-      <td><%= link_to '編集', edit_actor_path(actor), method: :get %></td>
-      <td><%= link_to '削除', actor_path(actor), method: :delete, data: {confirm: '本当に削除しますか？'}  %></td>
-    </tr>
+  <h2>Actorの一覧</h2>
+  <% if @actors.empty? %>
+    <h4><%= t 'actors.index.no_data' %></h4>
+  <% else %>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th><%= t 'activerecord.attributes.actor.first_name' %></th>
+          <th><%= t 'activerecord.attributes.actor.last_name' %></th>
+          <th><%= t 'activerecord.attributes.actor.birthday' %></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @actors.each do |actor| %>
+        <tr>
+          <td><%= actor.first_name %></td>
+          <td><%= actor.last_name %></td>
+          <td><%= actor.birthday.try(:strftime, '%Y/%m/%d') %></td>
+          <td><%= link_to '編集', edit_actor_path(actor), method: :get %></td>
+          <td><%= link_to '削除', actor_path(actor), method: :delete, data: {confirm: '本当に削除しますか？'}  %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   <% end %>
-  </tbody>
-</table>
 </div>
 <div  class="panel panel-default">
-<h2>Actorの追加</h2>
-<%= link_to '追加', :new_actor  %>
+  <h2>Actorの追加</h2>
+  <%= link_to '追加', :new_actor  %>
 </div>

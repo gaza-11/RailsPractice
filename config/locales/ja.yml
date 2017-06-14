@@ -1,5 +1,8 @@
 ---
 ja:
+  actors:
+    index:
+      no_data: データがありません
   activerecord:
     models:
       actor: 俳優
