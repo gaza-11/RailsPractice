@@ -21,10 +21,14 @@ class Actor < ApplicationRecord
 
   def birthday_valid?
     date = birthday_before_type_cast
+
     return if date.blank?
+    return unless date.is_a? String
+
+    errors.add :birthday, I18n.t('errors.messages.invalid_date') unless  /\A\d{1,4}\/\d{1,2}\/\d{1,2}\Z/ =~ date
 
     (y, m, d) = date.split('/').map &:to_i
     (y, m, d) = [y, m, d].map { |value| value.nil? ? 0 : value }
-    errors[:birthday] = I18n.t('errors.messages.invalid_date') unless Date.valid_date?(y, m, d)
+    errors.add :birthday, I18n.t('errors.messages.invalid_date') unless Date.valid_date?(y, m, d)
   end
 end

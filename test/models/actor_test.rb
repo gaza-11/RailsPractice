@@ -32,4 +32,21 @@ class ActorTest < ActiveSupport::TestCase
     assert actor.errors.include? :first_name
     assert actor.errors.include? :last_name
   end
+
+  test 'actor birthday must correct format' do
+    actor = Actor.new
+    actor.first_name = 'test'
+    actor.last_name = 'test'
+    actor.birthday = '2014/1/1/1'
+    assert actor.invalid?
+    assert actor.errors.include? :birthday
+
+    actor.birthday = '2017/1/32'
+    assert actor.invalid?
+    assert actor.errors.include? :birthday
+
+    actor.birthday = '2017/1'
+    assert actor.invalid?
+    assert actor.errors.include? :birthday
+  end
 end
