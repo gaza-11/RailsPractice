@@ -38,14 +38,14 @@ class ActorsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update(patch)' do
     actor = FactoryGirl.create(:actor)
-    patch "/actors/#{actor.id}", params: { actor: { first_name: 'Updated' } }
+    patch "/actors/#{actor.id}", params: { actor: { first_name: 'Updated', last_name: actor.last_name } }
     assert_redirected_to '/'
     assert_equal 'Updated', (Actor.find actor.id).first_name
   end
 
   test 'should update(put)' do
     actor = FactoryGirl.create(:actor)
-    put "/actors/#{actor.id}", params: { actor: { first_name: 'Updated' } }
+    put "/actors/#{actor.id}", params: { actor: { first_name: 'Updated', last_name: actor.last_name } }
     assert_redirected_to '/'
     assert_equal 'Updated', (Actor.find actor.id).first_name
   end
