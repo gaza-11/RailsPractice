@@ -31,7 +31,7 @@ class ActorsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to '/'
   end
 
-  test 'should create'do
+  test 'should create' do
     post '/actors/', params: { actor: { first_name: 'FirstName', last_name: 'LastName', birthday: '2001/1/1' } }
     assert_redirected_to '/'
   end
