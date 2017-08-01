@@ -1,0 +1,7 @@
+# 日本語のコメントを許可する
+Style/AsciiComments:
+  Enabled: false
+
+# 明示的に else で nil を返すのは分かりやすいので許可する
+Style/EmptyElse:
+  EnforcedStyle: empty

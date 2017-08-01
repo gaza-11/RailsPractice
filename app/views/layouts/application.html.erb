@@ -22,6 +22,14 @@
         </div>
         <div id="nav-data" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
+            <% unless current_member %>
+            <li><%= link_to 'ユーザ登録', '/members/new/' %></li>
+            <li><%= link_to 'ログイン', '/sessions/', method: :get %></li>
+            <% end %>
+            <% if current_member %>
+            <li><p class="navbar-text"><%= current_member.name %> さん</p></li>
+            <li><%= link_to 'ログアウト', '/sessions/', method: :delete, data: { confirm: 'ログアウトしますか？' } %></li>
+            <% end %>
             <li><a href="/">Home</a></li>
             <li><a href="/">CRUD練習</a></li>
           </ul>

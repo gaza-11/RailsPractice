@@ -1,0 +1,28 @@
+<div>
+  <h1 class="page-header">Member更新画面</h1>
+  <% if flash.notice %>
+      <div class="alert alert-info">通知メッセージ：<%= flash.notice %></div>
+  <% end %>
+</div>
+
+<div>
+  <%= form_for @member do |form| %>
+      <div class="form-group">
+        <table class="table table-bordered">
+          <tr>
+            <th scope="row"><%=form.label :name %></th>
+            <td><%= form.text_field :name %></td>
+          </tr>
+          <tr>
+            <th scope="row"><%=form.label :password %></th>
+            <td><%= form.text_field :password %></td>
+          </tr>
+          <tr>
+            <th scope="row"><%=form.label :password_confirmation %></th>
+            <td><%= form.text_field :password_confirmation %></td>
+          </tr>
+        </table>
+        <%= form.submit '更新', class: 'btn btn-default' %>
+      </div>
+  <% end %>
+</div>

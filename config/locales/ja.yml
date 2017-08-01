@@ -6,11 +6,18 @@ ja:
   activerecord:
     models:
       actor: 俳優
+      member: 会員
     attributes:
       actor:
         first_name: 名
         last_name: 姓
         birthday: 誕生日
+      member:
+        id: 会員ID
+        name: 氏名
+        password: パスワード
+        password_confirmation: もう一度パスワードを入力してください
+        old_password: 現在のパスワード
   errors:
       messages:
         invalid_date: の指定が不正です。

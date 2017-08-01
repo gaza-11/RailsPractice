@@ -1,0 +1,20 @@
+<div>
+  <h1 class="page-header">Member削除画面</h1>
+  <% if flash.notice %>
+      <div class="alert alert-info">通知メッセージ：<%= flash.notice %></div>
+  <% end %>
+</div>
+
+<div>
+  <%= form_for @member do |form| %>
+      <div class="form-group">
+        <table class="table table-bordered">
+          <tr>
+            <th scope="row"><%=form.label :name %></th>
+            <td><%= form.text_field :name %></td>
+          </tr>
+        </table>
+        <%= form.submit '削除', class: 'btn btn-default', data: {confirm: '本当に削除しますか？'} %>
+      </div>
+  <% end %>
+</div>
