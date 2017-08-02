@@ -34,8 +34,8 @@ class Member < ApplicationRecord
 
   private
 
-  # Memberモデルを通して保存する場合は必ずAdminFlagはFalse(TrueにするユーザはDBのコンソールで)
+  # Memberモデルを通して保存する場合AdminFlagはFalse(TrueにするユーザはDBのコンソールで)
   def set_admin_flag
-    self.admin_flag = false
+    self.admin_flag = false if admin_flag.nil?
   end
 end
