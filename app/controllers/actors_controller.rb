@@ -7,41 +7,65 @@ class ActorsController < ApplicationController
   end
 
   def destroy
-    Actor.delete params[:id]
-    flash[:notice] = '削除しました。'
-    redirect_to action: 'index'
+    if current_member
+      Actor.delete params[:id]
+      flash[:notice] = '削除しました。'
+      redirect_to action: 'index'
+    else
+      flash.notice = '削除するにはログインする必要があります'
+      redirect_to action: :index
+    end
   end
 
   def new
-    @actor = Actor.new
+    if current_member
+      @actor = Actor.new
+    else
+      flash.notice = '追加するにはログインする必要があります'
+      redirect_to action: :index
+    end
   end
 
   def edit
-    @actor = Actor.find params[:id]
+    if current_member
+      @actor = Actor.find params[:id]
+    else
+      flash.notice = '更新するにはログインする必要があります'
+      redirect_to action: :index
+    end
   end
 
   def create
-    @actor = Actor.new params[:actor].permit :first_name, :last_name, :birthday
-    if @actor.save
-      flash[:notice] = '登録しました。'
-      redirect_to action: 'index'
+    if current_member
+      @actor = Actor.new params[:actor].permit :first_name, :last_name, :birthday
+      if @actor.save
+        flash[:notice] = '登録しました。'
+        redirect_to action: 'index'
+      else
+        flash[:notice] = '登録に失敗しました。'
+        redirect_to action: 'new'
+      end
     else
-      flash[:notice] = '登録に失敗しました。'
-      redirect_to action: 'new'
+      flash.notice = '登録するにはログインする必要があります'
+      redirect_to action: :index
     end
   end
 
   def update
-    actor = params[:actor]
-
-    @actor = Actor.find params[:id]
-    @actor.assign_attributes(first_name: actor[:first_name], last_name: actor[:last_name], birthday: actor[:birthday])
-    if @actor.save
-      flash[:notice] = '更新しました。'
-      redirect_to action: 'index'
+    if current_member
+      actor = params[:actor]
+      @actor = Actor.find params[:id]
+      @actor.assign_attributes(first_name: actor[:first_name], last_name: actor[:last_name], birthday: actor[:birthday])
+      if @actor.save
+        flash[:notice] = '更新しました。'
+        redirect_to action: 'index'
+      else
+        flash[:notice] = '更新に失敗しました。'
+        render action: 'edit'
+      end
     else
-      flash[:notice] = '更新に失敗しました。'
-      render action: 'edit'
+      flash.notice = '更新するにはログインする必要があります'
+      redirect_to action: :index
     end
   end
 
