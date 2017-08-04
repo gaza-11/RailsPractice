@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     if member
       session[:member_id] = member.id
     else
-      flash.alert = 'パスワードと名前が一致しません'
+      flash.alert = 'ユーザが存在しないか、パスワードとユーザ名が一致しません'
     end
 
     redirect_to :root
