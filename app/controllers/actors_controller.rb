@@ -1,71 +1,47 @@
 class ActorsController < ApplicationController
   before_action :output_start_action_log
   after_action :output_end_action_log
+  before_action :login_required, except: %i[index search]
 
   def index
     @actors = Actor.all.page(params[:page])
   end
 
   def destroy
-    if current_member
-      Actor.delete params[:id]
-      flash.notice = '削除しました。'
-    else
-      flash.notice = '削除するにはログインする必要があります'
-    end
-
+    Actor.delete params[:id]
+    flash.notice = '削除しました。'
     redirect_to action: :index
   end
 
   def new
-    if current_member
-      @actor = Actor.new
-    else
-      flash.notice = '追加するにはログインする必要があります'
-      redirect_to action: :index
-    end
+    @actor = Actor.new
   end
 
   def edit
-    if current_member
-      @actor = Actor.find params[:id]
-    else
-      flash.notice = '更新するにはログインする必要があります'
-      redirect_to action: :index
-    end
+    @actor = Actor.find params[:id]
   end
 
   def create
-    if current_member
-      @actor = Actor.new params[:actor].permit :first_name, :last_name, :birthday
-      if @actor.save
-        flash.notice = '登録しました。'
-        redirect_to action: :index
-      else
-        flash.notice = '登録に失敗しました。'
-        redirect_to action: :new
-      end
-    else
-      flash.notice = '登録するにはログインする必要があります'
+    @actor = Actor.new params[:actor].permit :first_name, :last_name, :birthday
+    if @actor.save
+      flash.notice = '登録しました。'
       redirect_to action: :index
+    else
+      flash.notice = '登録に失敗しました。'
+      redirect_to action: :new
     end
   end
 
   def update
-    if current_member
-      actor = params[:actor]
-      @actor = Actor.find params[:id]
-      @actor.assign_attributes(first_name: actor[:first_name], last_name: actor[:last_name], birthday: actor[:birthday])
-      if @actor.save
-        flash.notice = '更新しました。'
-        redirect_to action: :index
-      else
-        flash.notice = '更新に失敗しました。'
-        render action: :edit
-      end
-    else
-      flash.notice = '更新するにはログインする必要があります'
+    actor = params[:actor]
+    @actor = Actor.find params[:id]
+    @actor.assign_attributes(first_name: actor[:first_name], last_name: actor[:last_name], birthday: actor[:birthday])
+    if @actor.save
+      flash.notice = '更新しました。'
       redirect_to action: :index
+    else
+      flash.notice = '更新に失敗しました。'
+      render action: :edit
     end
   end
 

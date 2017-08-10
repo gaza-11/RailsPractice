@@ -4,7 +4,14 @@ class ApplicationController < ActionController::Base
   private
 
   def current_member
-    Member.find_by id: session[:member_id] if session[:member_id]
+    @current_member ||= Member.find_by id: session[:member_id] if session[:member_id]
+  end
+
+  def login_required
+    return if current_member
+
+    flash.alert = 'その画面・機能の利用にはログインが必要です。'
+    redirect_to :root
   end
 
   helper_method :current_member

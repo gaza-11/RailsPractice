@@ -1,5 +1,7 @@
 # ログインユーザ登録・更新用コントローラ
 class MembersController < ApplicationController
+  before_action :login_required, except: %i[create new]
+
   def destroy
     @member = Member.find params[:id]
     @member.destroy
