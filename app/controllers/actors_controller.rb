@@ -70,7 +70,7 @@ class ActorsController < ApplicationController
   end
 
   def search
-    @actors = Actor.filter_by_name params[:first_name], params[:last_name]
+    @actors = Actor.filter_by_name(params[:first_name], params[:last_name]).page(params[:page])
     render action: :index
   end
 
