@@ -3,7 +3,7 @@ class ActorsController < ApplicationController
   after_action :output_end_action_log
 
   def index
-    @actors = Actor.all
+    @actors = Actor.all.page(params[:page])
   end
 
   def destroy
