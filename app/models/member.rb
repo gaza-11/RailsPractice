@@ -11,8 +11,8 @@
 class Member < ApplicationRecord
   validates :name, presence: true
   validates :password, presence: { on: :create },  confirmation: true
+  attribute :admin_flag, :boolean, default: false
   attr_accessor :password, :password_confirmation, :old_password
-  before_save :set_admin_flag
 
   def password=(val)
     self.hashed_password = BCrypt::Password.create(val) if val.present?
@@ -30,12 +30,5 @@ class Member < ApplicationRecord
         nil
       end
     end
-  end
-
-  private
-
-  # Memberモデルを通して保存する場合AdminFlagはFalse(TrueにするユーザはDBのコンソールで)
-  def set_admin_flag
-    self.admin_flag = false if admin_flag.nil?
   end
 end
