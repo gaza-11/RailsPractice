@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   resources :members, only: %i[destroy edit new create update] do
-    collection { get 'delete' }
+    collection { get 'delete/:id', to: 'members#delete' }
   end
 
   resources :sessions, only: %i[create index]
