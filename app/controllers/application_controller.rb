@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   private
 
   def login_required
-    return if current_member
+    return if view_context.current_member
 
     flash.alert = 'その画面・機能の利用にはログインが必要です。'
     redirect_to :root

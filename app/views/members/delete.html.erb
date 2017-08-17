@@ -11,7 +11,7 @@
         <table class="table table-bordered">
           <tr>
             <th scope="row"><%=form.label :name %></th>
-            <td><%= form.text_field :name %></td>
+            <td><%=form.label @member.name %></td>
           </tr>
         </table>
         <%= form.submit '削除', class: 'btn btn-default', data: {confirm: '本当に削除しますか？'} %>
