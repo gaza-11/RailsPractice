@@ -4,7 +4,11 @@ class ActorsController < ApplicationController
   before_action :login_required, except: %i[index search]
 
   def index
-    @actors = Actor.all.page(params[:page])
+    @actors = Actor.all
+    respond_to do |format|
+      format.html { @actors = @actors.page(params[:page]) }
+      format.json { render json: @actors }
+    end
   end
 
   def destroy
